@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.PaymentFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg"
+        android:backgroundTint="#d9d9d9"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/enter_card_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="Enter Card details below"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:layout_margin="16dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/txtNameOnCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="Name on Card"
+            android:textColor="#000"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/enter_card_" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edNameOnCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/filled_button"
+            android:backgroundTint="#ffffff"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="#9E9C9C"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txtNameOnCard"
+            app:layout_constraintTop_toBottomOf="@+id/txtNameOnCard" />
+
+        <TextView
+            android:id="@+id/txtCardNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="Card Number"
+            android:textColor="#000"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edNameOnCard" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/filled_button"
+            android:backgroundTint="#ffffff"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="#9E9C9C"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txtCardNo"
+            app:layout_constraintTop_toBottomOf="@+id/txtCardNo" />
+
+        <TextView
+            android:id="@+id/txtExpiry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="Expiry Date"
+            android:textColor="#000"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCard" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edExp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/filled_button"
+            android:backgroundTint="#ffffff"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="#9E9C9C"
+            app:layout_constraintStart_toStartOf="@+id/txtCardNo"
+            app:layout_constraintTop_toBottomOf="@+id/txtExpiry"
+            app:layout_constraintWidth_percent="0.43" />
+
+        <TextView
+            android:id="@+id/txtSec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="Security code"
+            android:textColor="#000"
+            android:textSize="12dp"
+            app:layout_constraintStart_toEndOf="@id/edExp"
+            app:layout_constraintTop_toBottomOf="@+id/txtCard" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edSec"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/filled_button"
+            android:backgroundTint="#ffffff"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="#9E9C9C"
+            app:layout_constraintStart_toStartOf="@id/txtSec"
+            app:layout_constraintTop_toBottomOf="@+id/txtExpiry"
+            app:layout_constraintWidth_percent="0.43" />
+
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/filled_button"
+            android:padding="8dp"
+            android:text="Save Card and Complete"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/brown"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edExp"
+            app:layout_constraintWidth_percent="0.4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

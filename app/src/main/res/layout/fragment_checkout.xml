@@ -145,7 +145,7 @@
             app:layout_constraintTop_toBottomOf="@+id/edTownCity" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edPhone"
+            android:id="@+id/edNameOnCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -177,10 +177,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edPostCode"
+            app:layout_constraintTop_toBottomOf="@+id/edNameOnCard"
             app:layout_constraintWidth_percent="0.4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </FrameLayout>

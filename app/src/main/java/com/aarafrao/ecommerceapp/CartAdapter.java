@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -61,7 +62,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         }
 
         Picasso.get().load(pd.getUrl()).into(holder.productimg);
-
         holder.btnDelete.setOnClickListener(n -> {
 
             SharedPreferences.Editor editor = sharedPreferences.edit();

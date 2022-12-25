@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -75,6 +76,10 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.MyView
         }
 
         Picasso.get().load(pd.getUrl()).into(holder.productimg);
+
+        holder.addtocard.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.action_navigation_notifications_to_checkoutFragment);
+        });
 
         holder.addtoFav.setOnClickListener(n -> {
             sharedPreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);

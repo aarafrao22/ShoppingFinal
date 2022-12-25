@@ -17,9 +17,9 @@
         android:background="@drawable/filled_button"
         android:backgroundTint="#f0f0f0"
         android:hint="Search"
-        android:textColor="@color/black"
         android:padding="10dp"
         android:textAlignment="textStart"
+        android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -27,11 +27,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtNameMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Hi,Omar"
+        android:text="Hi,"
         android:textColor="#000"
         android:textSize="10pt"
         android:textStyle="bold"
@@ -43,10 +43,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        tools:listitem="@layout/product_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_home" />
+        app:layout_constraintTop_toBottomOf="@+id/text_home"
+        tools:listitem="@layout/product_item" />
 
 
     <!--    <androidx.cardview.widget.CardView-->

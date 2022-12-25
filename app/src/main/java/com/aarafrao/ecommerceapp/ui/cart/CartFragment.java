@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -54,8 +55,9 @@ public class CartFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
 
         btnContinue.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "CheckOUt", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(v).navigate(R.id.action_navigation_dashboard_to_checkoutFragment);
         });
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         totalamount = root.findViewById(R.id.totalamount);
         countitem = root.findViewById(R.id.itemtext);
