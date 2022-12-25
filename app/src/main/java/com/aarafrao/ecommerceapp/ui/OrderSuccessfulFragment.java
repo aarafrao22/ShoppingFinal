@@ -12,18 +12,19 @@ import android.widget.Button;
 
 import com.aarafrao.ecommerceapp.R;
 
-public class PaymentFragment extends Fragment {
 
+public class OrderSuccessfulFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_payment, container, false);
+        View view = inflater.inflate(R.layout.fragment_order_successful, container, false);
 
-        Button btnContinue = view.findViewById(R.id.btnContinue);
-        btnContinue.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.action_paymentFragment_to_orderSuccessfulFragment);
+        Button continue_checkout = view.findViewById(R.id.continue_checkout1);
+
+        continue_checkout.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.action_orderSuccessfulFragment_to_navigation_home);
 
         });
         return view;

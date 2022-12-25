@@ -61,5 +61,18 @@
         android:id="@+id/paymentFragment"
         android:name="com.aarafrao.ecommerceapp.ui.PaymentFragment"
         android:label="fragment_payment"
-        tools:layout="@layout/fragment_payment" />
+        tools:layout="@layout/fragment_payment">
+        <action
+            android:id="@+id/action_paymentFragment_to_orderSuccessfulFragment"
+            app:destination="@id/orderSuccessfulFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderSuccessfulFragment"
+        android:name="com.aarafrao.ecommerceapp.ui.OrderSuccessfulFragment"
+        android:label="fragment_order_successful"
+        tools:layout="@layout/fragment_order_successful">
+        <action
+            android:id="@+id/action_orderSuccessfulFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>
