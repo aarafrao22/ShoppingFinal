@@ -67,7 +67,7 @@
 
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/sign_up_email"
+        android:id="@+id/edName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -85,7 +85,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDetail" />
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/sign_up_f_name"
+        android:id="@+id/edSirName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -102,7 +102,7 @@
         android:textColorHint="#9E9C9C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_email" />
+        app:layout_constraintTop_toBottomOf="@+id/edName" />
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/sign_up_password"
         android:layout_width="0dp"
@@ -120,11 +120,11 @@
         android:textColorHint="#9E9C9C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_f_name" />
+        app:layout_constraintTop_toBottomOf="@+id/edSirName" />
 
 
     <Button
-        android:id="@+id/btn_sign_up"
+        android:id="@+id/btnContinue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -153,7 +153,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
+        app:layout_constraintTop_toBottomOf="@+id/btnContinue" />
 
     <ProgressBar
         android:id="@+id/sign_up_progressBar"
@@ -163,7 +163,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
+        app:layout_constraintBottom_toTopOf="@+id/btnContinue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

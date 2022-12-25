@@ -3,14 +3,12 @@ package com.aarafrao.ecommerceapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,11 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
@@ -185,10 +179,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     private void initViews() {
         tvAlreadyHave = findViewById(R.id.sign_up_already_have);
-        edEmail = findViewById(R.id.sign_up_email);
+        edEmail = findViewById(R.id.edName);
         edPassword = findViewById(R.id.sign_up_password);
-        edName = findViewById(R.id.sign_up_f_name);
-        btnSignUp = findViewById(R.id.btn_sign_up);
+        edName = findViewById(R.id.edSirName);
+        btnSignUp = findViewById(R.id.btnContinue);
 
         firebaseAuth = FirebaseAuth.getInstance();
 //        firebaseFirestore = FirebaseFirestore.getInstance();

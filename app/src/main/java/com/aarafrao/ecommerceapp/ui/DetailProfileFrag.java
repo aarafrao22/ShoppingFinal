@@ -28,7 +28,7 @@ public class DetailProfileFrag extends Fragment {
         View view = inflater.inflate(R.layout.fragment_detail_profile, container, false);
 
         btnCancel = view.findViewById(R.id.btnCancel);
-        btnUpdate = view.findViewById(R.id.btn_sign_up);
+        btnUpdate = view.findViewById(R.id.btnContinue);
 
         btnCancel.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.action_detailProfileFrag_to_navigation_profile);
