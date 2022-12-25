@@ -1,6 +1,9 @@
 package com.aarafrao.ecommerceapp;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,14 +77,15 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.MyView
         Picasso.get().load(pd.getUrl()).into(holder.productimg);
 
         holder.addtoFav.setOnClickListener(n -> {
-            holder.addtoFav.setImageResource(R.drawable.heart_add_line);
+            sharedPreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.remove(String.valueOf(pd.getProduct_id()));
             editor.apply();
-
             Toast.makeText(context.getApplicationContext(), "ItemDeleted", Toast.LENGTH_SHORT).show();
             String value = sharedPreferences.getString(String.valueOf(pd.getProduct_id()), "");
+            holder.addtoFav.setImageResource(R.drawable.heart_add_line);
+            Log.d(TAG, "onBindViewHolder: " + value);
 
         });
     }

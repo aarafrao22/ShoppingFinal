@@ -48,9 +48,6 @@ public class WishlistFragment extends Fragment /*implements OnUpdateListener*/ {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-
-//        listener = (OnUpdateListener) getActivity();
-
         recyclerView = root.findViewById(R.id.productlistcard);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -90,6 +87,7 @@ public class WishlistFragment extends Fragment /*implements OnUpdateListener*/ {
         myadpater.notifyDataSetChanged();
         total += 3.95;
         totalamount.setText(String.valueOf(total));
+
         return root;
     }
 

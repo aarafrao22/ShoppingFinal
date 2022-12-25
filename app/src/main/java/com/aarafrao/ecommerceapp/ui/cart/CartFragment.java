@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -94,7 +95,6 @@ public class CartFragment extends Fragment {
         total += 3.95;
         totalamount.setText(String.valueOf(total));
         countitem.setText(String.valueOf(count) + " item");
-
 
         return root;
     }

@@ -73,8 +73,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             String value = sharedPreferences.getString(String.valueOf(pd1.getProduct_id()), "");
-            System.out.println("value");
-            System.out.println(value);
 
             if (value.isEmpty()) {
 
