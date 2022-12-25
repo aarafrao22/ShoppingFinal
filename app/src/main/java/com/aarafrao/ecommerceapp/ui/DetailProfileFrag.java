@@ -32,11 +32,12 @@ public class DetailProfileFrag extends Fragment {
 
         btnCancel.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.action_detailProfileFrag_to_navigation_profile);
-
         });
+
         btnUpdate.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.action_detailProfileFrag_to_navigation_profile);
         });
+
         return view;
     }
 }

@@ -1,4 +1,4 @@
-package com.aarafrao.ecommerceapp.ui.dashboard;
+package com.aarafrao.ecommerceapp.ui.wishlist;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,11 +16,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aarafrao.ecommerceapp.R;
-import com.aarafrao.ecommerceapp.databinding.FragmentDashboardBinding;
-import com.aarafrao.ecommerceapp.myadaptercard;
+import com.aarafrao.ecommerceapp.WishListAdapter;
+import com.aarafrao.ecommerceapp.databinding.FragmentNotificationsBinding;
+import com.aarafrao.ecommerceapp.CartAdapter;
 import com.aarafrao.ecommerceapp.ProductModel;
 import com.aarafrao.ecommerceapp.ui.home.HomeFragment;
-import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -30,39 +29,38 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class DashboardFragment extends Fragment {
+public class WishlistFragment extends Fragment /*implements OnUpdateListener*/ {
 
-    private FragmentDashboardBinding binding;
+    private FragmentNotificationsBinding binding;
     RecyclerView recyclerView;
-    myadaptercard myadpater;
+    Intent refresh;
+    WishListAdapter myadpater;
     ArrayList<ProductModel> list;
     SharedPreferences sharedPreferences;
-    String MyPREFERENCES = "MyPrefs";
+    String MyPREFERENCES = "WISHLIST";
     TextView totalamount;
     TextView countitem;
-    private MaterialButton btnContinue;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        recyclerView = root.findViewById(R.id.productlistcard);
-        btnContinue = root.findViewById(R.id.continue_checkout);
-        recyclerView.setHasFixedSize(true);
 
-        btnContinue.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "CheckOUt", Toast.LENGTH_SHORT).show();
-        });
+//        listener = (OnUpdateListener) getActivity();
+
+        recyclerView = root.findViewById(R.id.productlistcard);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         totalamount = root.findViewById(R.id.totalamount);
         countitem = root.findViewById(R.id.itemtext);
 
-        Intent refresh = new Intent(getContext(), HomeFragment.class);
+        refresh = new Intent(getContext(), HomeFragment.class);
         list = new ArrayList<>();
-        myadpater = new myadaptercard(getContext(), list,refresh);
+        myadpater = new WishListAdapter(getContext(), list, refresh);
+
         recyclerView.setAdapter(myadpater);
 
         sharedPreferences = getContext().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -79,7 +77,6 @@ public class DashboardFragment extends Fragment {
             Gson gson = new Gson();
             List<String> arrPackageData = gson.fromJson(entry.getValue().toString(), type);
             ProductModel pd = new ProductModel();
-            pd.setProduct_id(Integer.parseInt(entry.getKey()));
             pd.setPrice(Integer.parseInt(arrPackageData.get(0)));
             pd.setProduct_desc(arrPackageData.get(1));
             pd.setProduct_name(arrPackageData.get(3));
@@ -89,13 +86,10 @@ public class DashboardFragment extends Fragment {
             total += Integer.parseInt(arrPackageData.get(0)) * Integer.parseInt(arrPackageData.get(4));
             count += 1;
         }
-
+        countitem.setText(String.valueOf(count) + " item");
         myadpater.notifyDataSetChanged();
         total += 3.95;
         totalamount.setText(String.valueOf(total));
-        countitem.setText(String.valueOf(count) + " item");
-
-
         return root;
     }
 
@@ -104,4 +98,12 @@ public class DashboardFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+//    @Override
+//    public void onUpdate(ArrayList<ProductModel> text) {
+//        text = new ArrayList<>();
+//        myadpater = new myadaptercard(getContext(), text, refresh);
+//        recyclerView.setAdapter(myadpater);
+//        myadpater.notifyDataSetChanged();
+//    }
 }

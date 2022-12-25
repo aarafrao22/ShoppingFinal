@@ -1,6 +1,5 @@
-package com.aarafrao.ecommerceapp.ui.notifications;
+package com.aarafrao.ecommerceapp.ui.cart;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,20 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aarafrao.ecommerceapp.MainActivity3;
-import com.aarafrao.ecommerceapp.OnUpdateListener;
 import com.aarafrao.ecommerceapp.R;
-import com.aarafrao.ecommerceapp.databinding.FragmentNotificationsBinding;
-import com.aarafrao.ecommerceapp.myadaptercard;
+import com.aarafrao.ecommerceapp.databinding.FragmentDashboardBinding;
+import com.aarafrao.ecommerceapp.CartAdapter;
 import com.aarafrao.ecommerceapp.ProductModel;
 import com.aarafrao.ecommerceapp.ui.home.HomeFragment;
+import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -32,39 +30,39 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class NotificationsFragment extends Fragment /*implements OnUpdateListener*/ {
+public class CartFragment extends Fragment {
 
-    private FragmentNotificationsBinding binding;
+    private FragmentDashboardBinding binding;
     RecyclerView recyclerView;
-    Intent refresh;
-    myadaptercard myadpater;
-    private OnUpdateListener listener;
+    CartAdapter myadpater;
     ArrayList<ProductModel> list;
     SharedPreferences sharedPreferences;
     String MyPREFERENCES = "MyPrefs";
     TextView totalamount;
     TextView countitem;
-
+    private MaterialButton btnContinue;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+
+        binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-
-//        listener = (OnUpdateListener) getActivity();
-
         recyclerView = root.findViewById(R.id.productlistcard);
+        btnContinue = root.findViewById(R.id.continue_checkout);
         recyclerView.setHasFixedSize(true);
+
+        btnContinue.setOnClickListener(v -> {
+            Toast.makeText(getContext(), "CheckOUt", Toast.LENGTH_SHORT).show();
+        });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         totalamount = root.findViewById(R.id.totalamount);
         countitem = root.findViewById(R.id.itemtext);
 
-        refresh = new Intent(getContext(), HomeFragment.class);
+        Intent refresh = new Intent(getContext(), HomeFragment.class);
         list = new ArrayList<>();
-        myadpater = new myadaptercard(getContext(), list, refresh);
-
+        myadpater = new CartAdapter(getContext(), list, refresh);
         recyclerView.setAdapter(myadpater);
 
         sharedPreferences = getContext().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -81,6 +79,7 @@ public class NotificationsFragment extends Fragment /*implements OnUpdateListene
             Gson gson = new Gson();
             List<String> arrPackageData = gson.fromJson(entry.getValue().toString(), type);
             ProductModel pd = new ProductModel();
+            pd.setProduct_id(Integer.parseInt(entry.getKey()));
             pd.setPrice(Integer.parseInt(arrPackageData.get(0)));
             pd.setProduct_desc(arrPackageData.get(1));
             pd.setProduct_name(arrPackageData.get(3));
@@ -90,10 +89,13 @@ public class NotificationsFragment extends Fragment /*implements OnUpdateListene
             total += Integer.parseInt(arrPackageData.get(0)) * Integer.parseInt(arrPackageData.get(4));
             count += 1;
         }
-        countitem.setText(String.valueOf(count) + " item");
+
         myadpater.notifyDataSetChanged();
         total += 3.95;
         totalamount.setText(String.valueOf(total));
+        countitem.setText(String.valueOf(count) + " item");
+
+
         return root;
     }
 
@@ -102,12 +104,4 @@ public class NotificationsFragment extends Fragment /*implements OnUpdateListene
         super.onDestroyView();
         binding = null;
     }
-
-//    @Override
-//    public void onUpdate(ArrayList<ProductModel> text) {
-//        text = new ArrayList<>();
-//        myadpater = new myadaptercard(getContext(), text, refresh);
-//        recyclerView.setAdapter(myadpater);
-//        myadpater.notifyDataSetChanged();
-//    }
 }
