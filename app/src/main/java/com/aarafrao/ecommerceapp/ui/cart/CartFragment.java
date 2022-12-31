@@ -37,7 +37,7 @@ public class CartFragment extends Fragment {
     private FragmentDashboardBinding binding;
     RecyclerView recyclerView;
     CartAdapter myadpater;
-    ArrayList<ProductModel> list;
+    ArrayList<ProductModel> list = new ArrayList<>();
     SharedPreferences sharedPreferences;
     String MyPREFERENCES = "MyPrefs";
     TextView totalamount;
@@ -55,7 +55,11 @@ public class CartFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
 
         btnContinue.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.action_navigation_dashboard_to_checkoutFragment);
+            if (list.size() > 0) {
+
+                Navigation.findNavController(v).navigate(R.id.action_navigation_dashboard_to_checkoutFragment);
+            } else
+                Toast.makeText(getContext(), "Add Item in the cart first", Toast.LENGTH_SHORT).show();
         });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

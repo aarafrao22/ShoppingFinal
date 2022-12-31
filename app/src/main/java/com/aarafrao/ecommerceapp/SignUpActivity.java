@@ -3,7 +3,9 @@ package com.aarafrao.ecommerceapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -101,6 +103,17 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    private void saveData(String email, String name, String pass) {
+        SharedPreferences prefs = this.getSharedPreferences("Details", Context.MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = prefs.edit();
+
+        myEdit.putString("Email", email);
+        myEdit.putString("Name", name);
+        myEdit.putString("pass", pass);
+        myEdit.apply();
+        Toast.makeText(this, "DataSaved", Toast.LENGTH_SHORT).show();
+    }
+
     private void clickListeners() {
         tvAlreadyHave.setOnClickListener(this);
     }
@@ -115,6 +128,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
             String mail = edEmail.getText().toString();
             String pass = edPassword.getText().toString();
+            saveData(mail, edName.getText().toString(), pass);
 
             firebaseAuth.createUserWithEmailAndPassword(mail, pass)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -180,7 +194,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private void initViews() {
         tvAlreadyHave = findViewById(R.id.sign_up_already_have);
         edEmail = findViewById(R.id.edName);
-        edPassword = findViewById(R.id.sign_up_password);
+        edPassword = findViewById(R.id.edEmail);
         edName = findViewById(R.id.edSirName);
         btnSignUp = findViewById(R.id.btnContinue);
 

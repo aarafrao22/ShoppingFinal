@@ -54,7 +54,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         holder.productname.setText(pd.getProduct_name());
         holder.productdes.setText(pd.getProduct_desc());
         holder.productprice.setText(String.valueOf(pd.getPrice()));
-
         System.out.println(pd.quantity);
 
         if (holder.selectbox != null) {

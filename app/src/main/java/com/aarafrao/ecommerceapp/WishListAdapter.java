@@ -85,8 +85,10 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.MyView
             sharedPreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.remove(String.valueOf(pd.getProduct_id()));
+//            editor.remove(String.valueOf(pd.getProduct_id()));
+            editor.clear();
             editor.apply();
+
             Toast.makeText(context.getApplicationContext(), "ItemDeleted", Toast.LENGTH_SHORT).show();
             String value = sharedPreferences.getString(String.valueOf(pd.getProduct_id()), "");
             holder.addtoFav.setImageResource(R.drawable.heart_add_line);

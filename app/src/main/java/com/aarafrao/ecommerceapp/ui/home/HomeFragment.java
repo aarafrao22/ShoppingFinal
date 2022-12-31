@@ -1,11 +1,14 @@
 package com.aarafrao.ecommerceapp.ui.home;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -32,6 +35,7 @@ public class HomeFragment extends Fragment {
     ArrayList<ProductModel> list;
     SharedPreferences sharedPreferences;
     String MyPREFERENCES = "MyPrefs";
+    private TextView txtNameMain;
 
 
     @SuppressLint("MissingInflatedId")
@@ -41,11 +45,17 @@ public class HomeFragment extends Fragment {
 
 
         recyclerView = view.findViewById(R.id.productlist);
+        txtNameMain = view.findViewById(R.id.txtNameMain);
+
         databaseReference = FirebaseDatabase.getInstance().getReference("product");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         list = new ArrayList<>();
+
+        SharedPreferences preferences = getActivity().getSharedPreferences("Details", Context.MODE_PRIVATE);
+        String name = preferences.getString("Name", "");
+        txtNameMain.setText("Hi, " + name);
 
         HomeAdapter = new HomeAdapter(getContext(), list);
         recyclerView.setAdapter(HomeAdapter);

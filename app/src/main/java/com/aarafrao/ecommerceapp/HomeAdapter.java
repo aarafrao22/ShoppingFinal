@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
@@ -65,7 +66,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
             ProductModel pd1 = list.get(position);
             ArrayList<String> store = new ArrayList<>();
-            store.add(String.valueOf(pd1.getProduct_id()));
             store.add(String.valueOf(pd1.getPrice()));
             store.add(String.valueOf(pd1.getProduct_desc()));
             store.add(String.valueOf(pd1.getUrl()));
@@ -113,7 +113,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             store.add(String.valueOf(pd1.getProduct_desc()));
             store.add(String.valueOf(pd1.getUrl()));
             store.add(String.valueOf(pd1.getProduct_name()));
-
+//
             SharedPreferences.Editor editor = sharedPreferences.edit();
             String value = sharedPreferences.getString(String.valueOf(pd1.getProduct_id()), "");
             System.out.println("value");
@@ -152,6 +152,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
         holder.autoCompleteTextView.setOnItemClickListener((adapterView, view, i, l) -> {
             String item = adapterView.getItemAtPosition(i).toString();
+            holder.textInputLayout.setHint(item);
             System.out.println(String.valueOf(item));
         });
     }
@@ -166,9 +167,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         TextView productname, productdes, productprice, selectbox;
         ImageView productimg, addtocard, imgAddToFav;
         AutoCompleteTextView autoCompleteTextView;
+        TextInputLayout textInputLayout;
 
         public MyViewHolder(@NonNull View itemview) {
             super(itemview);
+            textInputLayout = itemview.findViewById(R.id.textInputLayout);
             imgAddToFav = itemview.findViewById(R.id.addTOFav);
             productname = itemview.findViewById(R.id.productName);
             productimg = itemview.findViewById(R.id.productImg);

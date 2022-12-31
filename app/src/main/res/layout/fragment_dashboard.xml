@@ -107,14 +107,14 @@
         android:id="@+id/totalamount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:layout_marginEnd="16dp"
         android:text="0 GBP"
         android:textColor="#000"
-        app:layout_constraintBottom_toTopOf="@id/continue_checkout"
         android:textSize="14dp"
-        android:layout_margin="16dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/productlistcard"
+        app:layout_constraintBottom_toTopOf="@id/continue_checkout"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.button.MaterialButton

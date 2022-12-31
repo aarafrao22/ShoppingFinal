@@ -25,6 +25,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.text.CollationElementIterator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +41,7 @@ public class WishlistFragment extends Fragment /*implements OnUpdateListener*/ {
     String MyPREFERENCES = "WISHLIST";
     TextView totalamount;
     TextView countitem;
+    private TextView txtNameMain;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -49,6 +51,14 @@ public class WishlistFragment extends Fragment /*implements OnUpdateListener*/ {
         View root = binding.getRoot();
 
         recyclerView = root.findViewById(R.id.productlistcard);
+        txtNameMain = root.findViewById(R.id.txtNameMain);
+
+
+        SharedPreferences preferences = getActivity().getSharedPreferences("Details", Context.MODE_PRIVATE);
+        String name = preferences.getString("Name", "");
+        txtNameMain.setText("Welcome, " + name);
+
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         totalamount = root.findViewById(R.id.totalamount);
