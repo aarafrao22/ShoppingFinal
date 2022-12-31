@@ -36,7 +36,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         initViews();
-        clickListeners();
         edEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -70,13 +69,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,9 +83,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    private void clickListeners() {
-        tvDontHave.setOnClickListener(this);
-    }
 
     private void sendToMainActivity(String s) {
         startActivity(new Intent(this, MainActivity3.class).putExtra("name", s));
@@ -151,11 +140,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void initViews() {
         tvDontHave = findViewById(R.id.sign_in_dont_have);
+        tvDontHave.setOnClickListener(this);
 
         edEmail = findViewById(R.id.sign_in_email);
         edPassword = findViewById(R.id.sign_in_password);
         btnSignIn = findViewById(R.id.btn_sign_in);
+
         forgotPassword = findViewById(R.id.sign_in_forgot);
+
+        forgotPassword.setOnClickListener(v -> {
+            startActivity(new Intent(this, ForgotPasswordActivity.class));
+        });
+
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
